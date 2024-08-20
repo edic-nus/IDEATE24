@@ -6,11 +6,9 @@
 */
 #include <esp_now.h>
 #include <WiFi.h>
-#include <DFRobot_SHT3x.h>
 
 // REPLACE WITH YOUR RECEIVER MAC Address
 uint8_t broadcastAddress[] = {0xEC, 0x62, 0x60, 0x94, 0xFB, 0xB4};
-DFRobot_SHT3x   sht3x;
 
 // Structure example to send data
 // Must match the receiver structure
@@ -31,11 +29,12 @@ void OnDataSent(const uint8_t *mac_addr, esp_now_send_status_t status) {
   Serial.print("\r\nLast Packet Send Status:\t");
   Serial.println(status == ESP_NOW_SEND_SUCCESS ? "Delivery Success" : "Delivery Fail");
 }
+
  
 void setup() {
   // Init Serial Monitor
   Serial.begin(115200);
- 
+
   // Set device as a Wi-Fi Station
   WiFi.mode(WIFI_STA);
 
